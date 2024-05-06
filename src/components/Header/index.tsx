@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import User from "../User";
 
 export default function Header() {
 	return (
@@ -19,6 +20,7 @@ export default function Header() {
 							>
 								Sobre nós
 							</Link>
+							<User />
 						</div>
 					</div>
 				</div>

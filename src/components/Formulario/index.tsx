@@ -2,85 +2,59 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export default function Form() {
+interface FormProps {
+	onSubmitForm: (data: any) => Promise<void>;
+}
+
+export default function Form(props: FormProps) {
 	const schema = yup.object().shape({
-		nome: yup.string().required("O nome é obrigatório."),
-		email: yup
-			.string()
-			.required("O e-mail é obrigatório.")
-			.email("Informe um e-mail válido."),
+		username: yup.string().required("O username é obrigatório."),
+		password: yup.string().required("O password é obrigatório."),
 	});
 
 	const {
 		register,
 		handleSubmit,
-		getValues,
-		reset,
 		formState: { errors },
 	} = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	function onSubmit(data: any): void {
-		console.log(data); // Aqui estão os dados do formulário
-	}
-
-	function mostrarValor(): void {
-		const { nome, email } = getValues();
-
-		// Realize a validação dinâmica com os valores dos campos
-		// Exemplo de validação simples
-		console.log("valor de nome: ", nome);
-		console.log("valor de email: ", email);
-	}
-
-	function limparValor(): void {
-		console.log("Antes de limpar", getValues());
-		reset();
-		console.log("Depois de limpar", getValues());
+		props.onSubmitForm(data);
 	}
 
 	return (
 		<>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<div>
-					<label>
-						Nome:
-						<input
-							type="text"
-							{...register("nome")}
-						/>
-					</label>
-					<span>{errors.nome?.message}</span>
+				<div className="">
+					<div className="mt-2">
+						<label>
+							Username:
+							<input
+								type="text"
+								className="ml-2"
+								{...register("username")}
+							/>
+						</label>
+						<span>{errors.username?.message}</span>
+					</div>
+					<div className="mt-2">
+						<label>
+							Password:
+							<input
+								type="password"
+								className="ml-2"
+								{...register("password")}
+							/>
+						</label>
+						<span>{errors.password?.message}</span>
+					</div>
 				</div>
 
-				<br />
-
-				<div>
-					<label>
-						E-mail:
-						<input
-							type="email"
-							{...register("email")}
-						/>
-					</label>
-					<span>{errors.email?.message}</span>
+				<div className="mt-5 d-flex justify-content-end">
+					<button type="submit">Enviar</button>
 				</div>
-				<br />
-
-				<button
-					type="button"
-					onClick={mostrarValor}
-				>
-					Mostrar valores
-				</button>
-				<button type="submit">Enviar</button>
-				<button
-					type="button"
-					onClick={limparValor}
-				>
-					Limpar valores
-				</button>
 			</form>
 		</>
 	);
