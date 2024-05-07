@@ -26,7 +26,7 @@ const PlayersStore = () => {
 	};
 };
 
-const PlayersProvider = ({ children }) => {
+const PlayersProvider = ({ children }: any) => {
 	return (
 		<PlayersContext.Provider value={PlayersStore()}>
 			{children}
