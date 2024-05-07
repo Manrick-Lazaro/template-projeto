@@ -19,6 +19,12 @@ export default function Header() {
 							>
 								Sobre nós
 							</Link>
+							<Link
+								to={"/contextPlayers"}
+								className="br-item"
+							>
+								Context Players
+							</Link>
 						</div>
 					</div>
 				</div>
