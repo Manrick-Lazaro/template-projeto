@@ -25,6 +25,12 @@ export default function Header() {
 							>
 								Context Players
 							</Link>
+							<Link
+								to={"/zustandPlayers"}
+								className="br-item"
+							>
+								Zustand Players
+							</Link>
 						</div>
 					</div>
 				</div>

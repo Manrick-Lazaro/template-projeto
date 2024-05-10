@@ -19,10 +19,11 @@ const PlayersStore = () => {
 	return {
 		teamA, // Team A's score
 		teamB, // Team B's score
-		increaseTeamAScore: () => setTeamA((v) => v + 1), // Increase Team A's score by one
-		decreaseTeamAScore: () => setTeamA((v) => v - 1), // Decrease Team A's score by one
-		increaseTeamBScore: () => setTeamB((v) => v + 1), // Increase Team B's score by one
-		decreaseTeamBScore: () => setTeamB((v) => v - 1), // Decrease Team B's score by one
+		increaseTeamAScore: () => setTeamA((v) => v + 1),
+		decreaseTeamAScore: () => setTeamA((v) => v - 1),
+
+		increaseTeamBScore: () => setTeamB((v) => v + 1),
+		decreaseTeamBScore: () => setTeamB((v) => v - 1),
 	};
 };
 

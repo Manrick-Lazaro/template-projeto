@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import ContextPlayers from "./pages/contextPlayers.tsx";
+import ZustandPlayers from "./pages/zustandPlayers.tsx";
 
 function App() {
 	return (
@@ -14,6 +15,10 @@ function App() {
 					<Route
 						path="/contextPlayers"
 						element={<ContextPlayers />}
+					/>
+					<Route
+						path="/zustandPlayers"
+						element={<ZustandPlayers />}
 					/>
 				</Routes>
 			</BrowserRouter>
