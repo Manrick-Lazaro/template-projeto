@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import DisneyService from "../services/DisneyService";
+import Header from "../components/Header";
 
 export default function Home() {
 	const [disney, setDisney] = useState([]);
@@ -21,6 +22,7 @@ export default function Home() {
 
 	return (
 		<>
+			<Header />
 			<div className="row m-5">
 				{disney.map((character: any, index: number) => (
 					<div
